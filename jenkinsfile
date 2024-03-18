@@ -1,22 +1,15 @@
 pipeline{
-    agent any
-        
-    environment{
-        PATH = "/etc/maven:$PATH"
+    agent {
+        docker { image: 'node16-alpine'}
     }
-        
-        stages{
-            stage("Git checkout"){
-                steps{
-                    git branch: 'main', url:'https://github.com/AnuuDarshik/Jenkinsdemo'
+    
+    stages{
+        stage('Test'){
+            steps{
+                sh 'node -version'
             }
             
         }
-        
-            stage("Maven build"){
-                steps{
-                    sh "mvn clean package"
-            }
     }
 }
-}
+
