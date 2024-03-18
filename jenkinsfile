@@ -1,1 +1,21 @@
-
+pipeline{
+    agent any{
+        
+    environment{
+        PATH = "/etc/maven:$PATH"
+    }
+        
+        stages{
+            stage("Git checkout")
+                steps{
+                    git branch: 'main', url:'https://github.com/AnuuDarshik/Jenkinsdemo'
+            }
+            
+        }
+        
+            stage("Maven build")
+                steps{
+                    sh "mvn clean package"
+            }
+    }
+}
