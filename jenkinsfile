@@ -1,21 +1,22 @@
 pipeline{
-    agent any{
+    agent any
         
     environment{
         PATH = "/etc/maven:$PATH"
     }
         
         stages{
-            stage("Git checkout")
+            stage("Git checkout"){
                 steps{
                     git branch: 'main', url:'https://github.com/AnuuDarshik/Jenkinsdemo'
             }
             
         }
         
-            stage("Maven build")
+            stage("Maven build"){
                 steps{
                     sh "mvn clean package"
             }
     }
+}
 }
